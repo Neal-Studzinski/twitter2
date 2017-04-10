@@ -8,6 +8,10 @@ import User from './models/user_model.js'
 
 export default function app() {
 
+    
+
+
+
     let testUser = new User({
         username: 'Neal',
         displayName: 'NAS',
@@ -29,6 +33,9 @@ export default function app() {
 
         switch (action.type) {
             case "START":
+                return currentState;
+
+            case "LOGIN":
                 return currentState;
             case "TWEET_VIEW":
                 return currentState;
