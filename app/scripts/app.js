@@ -5,10 +5,11 @@ import loginView from './views/login_view.js'
 import exampleView from './views/example_view.js'
 import tweetView from './views/tweet_view.js'
 import User from './models/user_model.js'
+import api from './api.js'
 
 export default function app() {
 
-    
+
 
 
 
