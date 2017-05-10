@@ -1,42 +1,39 @@
+import headerView from './header_view.js';
 
 
 export default function loginView(store) {
+    let state = store.getState();
+
     // Create html
-    let html = $(`
+    let $viewHtml = $(` <section class="page-wrapper chat-view"></section>`);
+    let $contentWrapper = $(` <div class="view-content">
+                                <h1>Tweeter</h1>
+                                <h2>sign in</h2>
+                             </div>`);
+    $viewHtml.append($contentWrapper);
+
+
+    let $postForm = $(`
         <div>
-            <h1 id="header">HI THERE!</h1>
             <form id="login-form">
-                <input id="username" />
-                <input id="password" type="password"/>
-                <button id="submit">login</button>
+                <input class="input-email" type="text" name="email" placeholder="email…">
+                <input class="input-password" type="password" name="password" placeholder="password…">
+                <button class="btn btn-signin" type="submit" name="sign in button">sign in</button>
             </form>
-            <button id="matt">Matt's Button</button>
-            <div id="output"></div>
         </div>`)
 
-    //Add event listeners
-    let loginForm = html.find('#login-form');
-    let output = html.find('#output');
-    let mattsButton = html.find('#matt')
-    let header = html.find('#header')
+    $contentWrapper.append($postForm);
 
-    loginForm.on("submit", function(e) {
+    //Add event listeners
+    $postForm.find('.btn-signin').on('click', (e) => {
         e.preventDefault();
-        let username = html.find('#username').val();
-        output.append(`<p>${username}</p>`);
+        store.dispatch({
+            type: 'SIGNIN',
+            login : $postForm.find('.input-email').val(),
+            password : $postForm.find('.input-password').val()
+        });
     });
 
-    mattsButton.on('click', function() {
-        // .html()   -- replaces
-        // .append() -- adds to
-        mattsButton.html("Neal's Button");
-    })
-
-    header.on('click', function() {
-        header.append('YAY')
-    })
-
-
-    //retrun html
-    return html
-}
+    // return html of view
+    return $viewHtml;
+  }

@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from './middleware/thunk.js'
 import logger from './middleware/logger.js'
+import headerView from './views/header_view.js'
 import loginView from './views/login_view.js'
 import exampleView from './views/example_view.js'
 import tweetView from './views/tweet_view.js'
