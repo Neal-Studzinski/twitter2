@@ -1,3 +1,4 @@
+import React from 'react';
 import headerView from './header_view.js';
 
 
